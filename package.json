@@ -1,0 +1,25 @@
+{
+  "name": "leadflow",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Multi-tenant SaaS platform for German mortgage brokerages",
+  "scripts": {
+    "install:all": "npm install && npm --prefix server install && npm --prefix client install",
+    "dev:server": "npm --prefix server run dev",
+    "dev:worker": "npm --prefix server run worker",
+    "dev:client": "npm --prefix client run dev",
+    "dev": "concurrently -n \"SERVER,WORKER,CLIENT\" -c \"blue,green,magenta\" \"npm run dev:server\" \"npm run dev:worker\" \"npm run dev:client\"",
+    "build:server": "npm --prefix server run build",
+    "build:client": "npm --prefix client run build",
+    "build": "npm run build:server && npm run build:client",
+    "test:server": "npm --prefix server test",
+    "test": "npm run test:server",
+    "seed": "npm --prefix server run seed"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
