@@ -10,6 +10,7 @@
     "start": "node dist/server.js",
     "start:worker": "node dist/workers/index.js",
     "seed": "ts-node --transpile-only src/scripts/seed.ts",
+    "db:view": "ts-node --transpile-only src/scripts/viewDb.ts",
     "test": "vitest run --testTimeout=25000",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit"
