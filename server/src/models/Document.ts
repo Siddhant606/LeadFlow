@@ -64,8 +64,7 @@ const DocumentSchema = new Schema<IDocument>(
       type: String,
     },
     verificationDetails: {
-      type: Map,
-      of: Schema.Types.Mixed,
+      type: Schema.Types.Mixed,
       default: {},
     },
   },

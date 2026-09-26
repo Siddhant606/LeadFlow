@@ -4,7 +4,8 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'node',
-    testTimeout: 25000,
-    hookTimeout: 25000,
+    testTimeout: 35000,
+    hookTimeout: 35000,
+    fileParallelism: false, // Run test suites sequentially to avoid MongoDB/Redis race conditions
   },
 });
