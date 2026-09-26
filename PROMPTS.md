@@ -590,4 +590,14 @@ fix this: PS C:\Users\arti0\OneDrive\Desktop\LeadFlow> npm run dev
 operable program or batch file.
 ```
 
+---
+
+### Prompt 5: Database Inspection & Data Visibility
+**Timestamp**: 2026-09-26T14:21:41+05:30
+**Input Prompt**:
+```markdown
+excellent, now it is working, now tell me where can I see my data ? which database you used and how to see it ?
+```
+
+
 
