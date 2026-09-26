@@ -508,3 +508,54 @@ Start by inspecting the existing repository and then create a concise implementa
 
 START BUILDING.
 ```
+
+---
+
+### Implementation Trajectory & Iteration Log
+- **Phase 1: Project Setup & Monorepo Initialization**
+  - Initialized isolated Git repository in `LeadFlow`.
+  - Created root `package.json`, `client/`, and `server/` configurations.
+  - Confirmed local MongoDB running on `127.0.0.1:27017`.
+  - Installed dependencies for client (Vite, React, TypeScript, TanStack Query, Tailwind CSS, Socket.IO Client) and server (Express, Mongoose, Zod, BullMQ, ioredis, Multer, Nodemailer, Helmet).
+  - Designed auto-fallback Redis configuration using embedded `redis-memory-server` to allow zero-hassle dev and test execution even when external standalone Redis is not active.
+- **Phase 2: Database Models & Tenant Scoping**
+  - Implemented Mongoose models with strict tenant compound indexes: `Brokerage`, `User`, `Lead`, `Client`, `DocumentModel`, `Task`, `EmailTemplate`, and `PipelineStage`.
+  - Implemented partial unique compound index `{ brokerageId: 1, externalId: 1 }` for webhook idempotency.
+  - Implemented unique index `{ brokerageId: 1, leadId: 1 }` on `Client` to prevent duplicate client conversion.
+- **Phase 3 & 4: Authentication, RBAC & Multi-Tenancy Enforcement**
+  - Created JWT sign/verify utilities, bcrypt password hashing.
+  - Built `authenticate` and `requireRole` middleware enforcing RBAC (`PLATFORM_ADMIN`, `BROKERAGE_ADMIN`, `ADVISOR`, `CLIENT`).
+  - Built `enforceTenant` middleware preventing IDOR attacks and cross-tenant access.
+  - Built centralized `errorHandler` and Zod validation middleware.
+- **Phase 5: Lead Webhook & Deduplication**
+  - Implemented `POST /api/webhooks/leads` authenticated via `x-api-key`.
+  - Normalization for email (trimmed lowercase) and German phone numbers (`0170...`, `0049...`, spaces/dashes normalized to unified `+49170...`).
+  - Deduplicated webhook requests with matching `brokerageId + externalId` returning `200 OK` with `{ deduplicated: true }`.
+  - Duplicate person detection via normalized email or phone returning `{ duplicatePersonDetected: true }`.
+- **Phase 6: Pipeline & Socket.IO Real-Time**
+  - Implemented Kanban stage progression (`NEW`, `CONTACTED`, `QUALIFIED`, `APPLICATION`, `WON`, `LOST`).
+  - Stage transitions trigger linked email templates with placeholder rendering (`{{clientName}}`, `{{advisorName}}`, `{{brokerageName}}`) and automated task generation.
+  - Real-time Socket.IO broadcasts scoped strictly to tenant rooms (`tenant:${brokerageId}`).
+- **Phase 7: Lead to Client Conversion**
+  - Implemented `POST /api/clients/convert/:leadId`.
+  - Creates `CLIENT` user and `Client` case record, preventing duplicate conversion.
+- **Phase 8 & 9: Document Storage, BullMQ & Async Worker**
+  - Fast file upload storing binary in object/disk storage with unique storageKey and metadata in MongoDB.
+  - Immediate return with status `UPLOADED`.
+  - BullMQ queue `document-verification` with retry backoff and worker simulating realistic slow OCR (2-3s delay), error handling, and status transition to `PASSED` or `FAILED`.
+  - Real-time updates emitted via Socket.IO to both tenant room and client portal room.
+- **Phase 10 & 11: Email & Tasks Automations & Dashboard**
+  - Configured email templates with safe failure handling (email outage never breaks core pipeline transition).
+  - Automated tasks with due dates and overdue calculation.
+  - Dashboard aggregations for total leads, stage breakdown, overdue tasks, and document OCR counts.
+- **Phase 12: Automated Testing**
+  - Executed 20 Vitest unit/integration tests across 5 test suites.
+  - Addressed Vitest parallel test suite collision by setting `fileParallelism: false` and unique tenant slugs per test suite.
+  - Fixed Zod email validation pipeline to trim before email format check.
+  - 100% tests passing (`20 passed`).
+- **Phase 13 & 14: Frontend & Documentation**
+  - Built React TypeScript client pages: `LoginPage`, `DashboardPage`, `PipelinePage`, `LeadDetailPage`, `ClientsPage`, `ClientDetailPage`, `TasksPage`, `DocumentsPage`, `EmailTemplatesPage`, `PipelineSettingsPage`, and `ClientPortalPage`.
+  - Built interactive `WebhookSimulatorModal` for 1-click external lead testing with presets.
+  - Created Dockerfile, Nginx configuration, and `docker-compose.yml`.
+  - Created comprehensive `README.md`.
+
