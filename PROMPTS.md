@@ -518,6 +518,16 @@ START BUILDING.
 is the whole implementation ready ?
 ```
 
+---
+
+### Prompt 3: Step-by-Step Run & Verification Instructions
+**Timestamp**: 2026-09-26T14:03:48+05:30
+**Input Prompt**:
+```markdown
+give me step by step instructions to run and check
+```
+
+
 - **Phase 1: Project Setup & Monorepo Initialization**
   - Initialized isolated Git repository in `LeadFlow`.
   - Created root `package.json`, `client/`, and `server/` configurations.
