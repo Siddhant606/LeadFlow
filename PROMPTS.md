@@ -575,3 +575,19 @@ give me step by step instructions to run and check
   - Created Dockerfile, Nginx configuration, and `docker-compose.yml`.
   - Created comprehensive `README.md`.
 
+---
+
+### Prompt 4: Root concurrently command fix
+**Timestamp**: 2026-09-26T14:07:20+05:30
+**Input Prompt**:
+```markdown
+fix this: PS C:\Users\arti0\OneDrive\Desktop\LeadFlow> npm run dev
+
+> leadflow@1.0.0 dev
+> concurrently -n "SERVER,WORKER,CLIENT" -c "blue,green,magenta" "npm run dev:server" "npm run dev:worker" "npm run dev:client"       
+
+'concurrently' is not recognized as an internal or external command,
+operable program or batch file.
+```
+
+
