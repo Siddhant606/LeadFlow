@@ -706,4 +706,14 @@ it is continously showing this wothout getting logged in , help me
 [Image: Login screen showing "Signing in..." button disabled in continuous loading state]
 ```
 
+---
+
+### Prompt 15: Browser DevTools Inspection for Login Request
+**Timestamp**: 2026-09-27T15:47:00+05:30
+**Input Prompt**:
+```markdown
+[Image: Chrome DevTools Console tab showing browser extension warnings (contentscript.js)]
+```
+
+
 
