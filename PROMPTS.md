@@ -635,6 +635,17 @@ Background checking
 Now i want to deploy this project to the github repository with its full commit history (if not done already)
 ```
 
+---
+
+### Prompt 8: Git Push Non-Fast-Forward Error Resolution
+**Timestamp**: 2026-09-27T14:14:12+05:30
+**Input Prompt**:
+```markdown
+I am getting error, help me resolve this by guiding me
+[Image: git push rejected: Updates were rejected because the remote contains work that you do not have locally]
+```
+
+
 
 
 
