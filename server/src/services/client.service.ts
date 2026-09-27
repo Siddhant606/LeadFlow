@@ -54,7 +54,7 @@ export class ClientService {
     const temporaryPassword = options?.password || 'LeadFlow2025!';
     const passwordHash = await hashPassword(temporaryPassword);
 
-    let user: IUser | null = await User.findOne({
+    let user: any = await User.findOne({
       email: lead.email,
       brokerageId,
     });

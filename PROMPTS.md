@@ -673,11 +673,15 @@ what to do here ? help me
 [Image: Render deployment build failed with error: tsconfig.json(5,25): error TS5108: Option 'moduleResolution=node10' has been removed. Please remove it from your configuration.]
 ```
 
+---
 
-
-
-
-
-
-
-
+### Prompt 12: Render Monorepo Dependency Resolution & TypeScript Build Fix
+**Timestamp**: 2026-09-27T15:09:33+05:30
+**Input Prompt**:
+```markdown
+I am still getting errors after doing manual build, here are they: src/routes/dashboard.routes.ts(1,24): error TS2307: Cannot find module 'express' or its corresponding type declarations.
+src/routes/document.routes.ts(1,24): error TS2307: Cannot find module 'express' or its corresponding type declarations.
+...
+src/workers/index.ts(17,22): error TS2591: Cannot find name 'module'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node` and then add 'node' to the types field in your tsconfig.
+==> Build failed 😞
+```
