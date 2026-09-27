@@ -715,5 +715,18 @@ it is continously showing this wothout getting logged in , help me
 [Image: Chrome DevTools Console tab showing browser extension warnings (contentscript.js)]
 ```
 
+---
+
+### Prompt 16: MongoDB Atlas IP Access Whitelist Resolution
+**Timestamp**: 2026-09-27T15:57:41+05:30
+**Input Prompt**:
+```markdown
+I am getting errors in render backend, fix the problem: [INFO] Initializing LeadFlow Backend Services...
+[ERROR] Failed to connect to MongoDB MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/
+==> Exited with status 1
+[Image: Login screen displaying timeout error message]
+```
+
+
 
 
