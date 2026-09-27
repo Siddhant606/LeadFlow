@@ -22,8 +22,13 @@ async function bootstrap() {
       logger.warn('Auto-seed check encountered non-fatal error:', seedErr);
     }
 
-    // 2. Initialize Redis (with auto fallback to embedded memory server if standalone is offline)
-    await initRedis();
+    // 2. Initialize Redis (with auto-fallback and graceful degradation)
+    try {
+      await initRedis();
+      createDocumentWorker();
+    } catch (redisErr) {
+      logger.warn('Redis queue connection issue (background worker running in degraded mode):', redisErr);
+    }
 
     // 3. Initialize Express App & HTTP Server
     const app = createApp();
@@ -32,10 +37,7 @@ async function bootstrap() {
     // 4. Initialize Socket.IO
     initSocketIO(server);
 
-    // 5. Initialize BullMQ Document Worker in-process for seamless local dev & demo
-    createDocumentWorker();
-
-    // 6. Listen
+    // 5. Listen
     server.listen(config.port, () => {
       logger.info(`LeadFlow API Server running on port ${config.port} (${config.nodeEnv})`);
       logger.info(`Client origin allowed: ${config.clientUrl}`);

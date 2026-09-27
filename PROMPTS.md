@@ -727,6 +727,19 @@ I am getting errors in render backend, fix the problem: [INFO] Initializing Lead
 [Image: Login screen displaying timeout error message]
 ```
 
+---
+
+### Prompt 17: Render Redis CLI Command URL Sanitization & TLS Parser Fix
+**Timestamp**: 2026-09-27T16:05:56+05:30
+**Input Prompt**:
+```markdown
+after changing ip access address to 0.0.0.0/0 and manual deploying, [ERROR] Fatal error during server bootstrap: TypeError: Invalid URL
+    at new URL (node:internal/url:899:25)
+    at initRedis (/opt/render/project/src/server/dist/config/redis.js:55:20)
+  input: 'redis-cli --tls -u redis://default:gQAAAAAABKyeAAIgcDI0MTZkYzI5MmQ2N2Y0M2YwOTAyYzIzMmExYTIxMzBhNA@rare-sunbird-306334.upstash.io:6379'
+```
+
+
 
 
 
