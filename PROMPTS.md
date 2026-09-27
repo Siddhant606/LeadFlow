@@ -652,7 +652,16 @@ I am getting error, help me resolve this by guiding me
 **Input Prompt**:
 ```markdown
 Now Guide through how to deploy this whole project
+---
+
+### Prompt 10: MongoDB Atlas Driver Selection
+**Timestamp**: 2026-09-27T14:27:16+05:30
+**Input Prompt**:
+```markdown
+what should i select here ?
+[Image: MongoDB Atlas Connect to Cluster0 modal with options: "Drivers and Client Libraries", "Compass", "Shell", "MongoDB for VS Code", "Atlas SQL"]
 ```
+
 
 
 
