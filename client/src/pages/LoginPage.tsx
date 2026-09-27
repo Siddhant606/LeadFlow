@@ -29,7 +29,11 @@ export const LoginPage: React.FC = () => {
         navigate('/');
       }
     } catch (err: any) {
-      if (err.response?.status === 404) {
+      if (err.code === 'ECONNABORTED' || err.message?.includes('timeout')) {
+        setError('Server request timed out. If using Render free tier, the backend may be taking up to 50s to wake up from sleep. Please try again in a few seconds.');
+      } else if (err.message === 'Network Error' || !err.response) {
+        setError('Cannot reach backend server (Network Error / CORS). Check if your Render backend is running and that VITE_API_URL is set.');
+      } else if (err.response?.status === 404) {
         setError('Backend API not found (404). Please ensure VITE_API_URL is set in Vercel to your live Render backend URL.');
       } else {
         const msg = typeof err.response?.data === 'string'

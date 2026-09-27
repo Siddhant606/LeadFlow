@@ -18,10 +18,11 @@ export function createApp(): Express {
     })
   );
 
-  // CORS configuration
+  // CORS configuration (allow dynamic origins from any frontend deployment)
   app.use(
     cors({
-      origin: [config.clientUrl, 'http://localhost:5173', 'http://127.0.0.1:5173', '*'],
+      origin: true,
+      credentials: true,
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
       allowedHeaders: ['Content-Type', 'Authorization', 'x-api-key', 'x-brokerage-id', 'x-brokerage-slug'],
     })

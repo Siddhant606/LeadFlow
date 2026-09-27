@@ -696,3 +696,14 @@ after deploying, it is still showing this, help me
 [Image: LeadFlow login screen on Vercel displaying error: "The page could not be found"]
 ```
 
+---
+
+### Prompt 14: Continuous "Signing in..." State Resolution (CORS, Cold Start & Timeouts)
+**Timestamp**: 2026-09-27T15:43:03+05:30
+**Input Prompt**:
+```markdown
+it is continously showing this wothout getting logged in , help me
+[Image: Login screen showing "Signing in..." button disabled in continuous loading state]
+```
+
+

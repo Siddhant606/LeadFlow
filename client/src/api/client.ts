@@ -5,6 +5,7 @@ const cleanBase = rawBase ? `${rawBase.replace(/\/+$/, '')}/api` : '/api';
 
 export const api = axios.create({
   baseURL: cleanBase,
+  timeout: 45000,
   headers: {
     'Content-Type': 'application/json',
   },
