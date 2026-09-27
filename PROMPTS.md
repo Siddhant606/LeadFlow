@@ -651,7 +651,8 @@ I am getting error, help me resolve this by guiding me
 **Timestamp**: 2026-09-27T14:18:35+05:30
 **Input Prompt**:
 ```markdown
-Now Guide through how to deploy this whole project
+```
+
 ---
 
 ### Prompt 10: MongoDB Atlas Driver Selection
@@ -661,6 +662,17 @@ Now Guide through how to deploy this whole project
 what should i select here ?
 [Image: MongoDB Atlas Connect to Cluster0 modal with options: "Drivers and Client Libraries", "Compass", "Shell", "MongoDB for VS Code", "Atlas SQL"]
 ```
+
+---
+
+### Prompt 11: Render TypeScript TS5108 Build Failure Resolution
+**Timestamp**: 2026-09-27T15:02:50+05:30
+**Input Prompt**:
+```markdown
+what to do here ? help me
+[Image: Render deployment build failed with error: tsconfig.json(5,25): error TS5108: Option 'moduleResolution=node10' has been removed. Please remove it from your configuration.]
+```
+
 
 
 

@@ -3,6 +3,8 @@ import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import routes from './routes';
+import path from 'path';
+import fs from 'fs';
 import { errorHandler } from './middleware/errorHandler';
 import { config } from './config/env';
 
@@ -42,13 +44,22 @@ export function createApp(): Express {
   // Mount API routes
   app.use('/api', routes);
 
-  // Catch-all 404 for undefined routes
-  app.use('*', (_req, res) => {
-    res.status(404).json({
-      success: false,
-      error: { message: 'API route not found' },
+  // Serve frontend static build if present (e.g. unified deployment on Render)
+  const clientDistPath = path.resolve(__dirname, '../../client/dist');
+  if (fs.existsSync(clientDistPath)) {
+    app.use(express.static(clientDistPath));
+    app.get('*', (_req, res) => {
+      res.sendFile(path.join(clientDistPath, 'index.html'));
     });
-  });
+  } else {
+    // Catch-all 404 for undefined routes
+    app.use('*', (_req, res) => {
+      res.status(404).json({
+        success: false,
+        error: { message: 'API route not found' },
+      });
+    });
+  }
 
   // Centralized error handler
   app.use(errorHandler);
