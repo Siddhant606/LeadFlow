@@ -599,5 +599,33 @@ operable program or batch file.
 excellent, now it is working, now tell me where can I see my data ? which database you used and how to see it ?
 ```
 
+---
+
+### Prompt 6: End-to-End Workflow Verification from External Sources
+**Timestamp**: 2026-09-27T13:48:42+05:30
+**Input Prompt**:
+```markdown
+The assignment says leads arrive from web forms, ad platforms, booking tools, and partner links, and that LeadFlow should receive leads automatically, is this functionality working ? is this flow flollwong ? Potential customer
+       ↓
+Website / external lead form
+       ↓
+LeadFlow webhook
+       ↓
+Lead created
+       ↓
+Advisor pipeline
+       ↓
+Advisor contacts customer
+       ↓
+Lead → Client
+       ↓
+Client gets login
+       ↓
+Documents uploaded
+       ↓
+Background checking
+```
+
+
 
 
