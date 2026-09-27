@@ -1,7 +1,10 @@
 import axios from 'axios';
 
+const rawBase = (import.meta.env.VITE_API_URL as string) || '';
+const cleanBase = rawBase ? `${rawBase.replace(/\/+$/, '')}/api` : '/api';
+
 export const api = axios.create({
-  baseURL: '/api',
+  baseURL: cleanBase,
   headers: {
     'Content-Type': 'application/json',
   },

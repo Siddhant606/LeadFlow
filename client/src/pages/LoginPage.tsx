@@ -29,7 +29,14 @@ export const LoginPage: React.FC = () => {
         navigate('/');
       }
     } catch (err: any) {
-      setError(err.response?.data?.error?.message || 'Login failed. Please check your credentials.');
+      if (err.response?.status === 404) {
+        setError('Backend API not found (404). Please ensure VITE_API_URL is set in Vercel to your live Render backend URL.');
+      } else {
+        const msg = typeof err.response?.data === 'string'
+          ? (err.response.data.includes('not be found') ? 'Backend API endpoint not found (404). Check VITE_API_URL.' : err.response.data)
+          : err.response?.data?.error?.message || 'Login failed. Please check your credentials or backend status.';
+        setError(msg);
+      }
     } finally {
       setIsLoading(false);
     }

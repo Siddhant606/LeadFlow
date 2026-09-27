@@ -685,3 +685,14 @@ src/routes/document.routes.ts(1,24): error TS2307: Cannot find module 'express' 
 src/workers/index.ts(17,22): error TS2591: Cannot find name 'module'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node` and then add 'node' to the types field in your tsconfig.
 ==> Build failed 😞
 ```
+
+---
+
+### Prompt 13: Vercel Frontend 404 API Connection & SPA Rewrites Fix
+**Timestamp**: 2026-09-27T15:32:13+05:30
+**Input Prompt**:
+```markdown
+after deploying, it is still showing this, help me
+[Image: LeadFlow login screen on Vercel displaying error: "The page could not be found"]
+```
+

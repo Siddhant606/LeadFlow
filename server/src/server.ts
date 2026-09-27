@@ -14,6 +14,14 @@ async function bootstrap() {
     // 1. Connect MongoDB
     await connectDatabase();
 
+    // Auto-seed demo tenants & users if database is empty (e.g. freshly deployed MongoDB Atlas)
+    try {
+      const { seedIfEmpty } = await import('./scripts/autoSeed');
+      await seedIfEmpty();
+    } catch (seedErr) {
+      logger.warn('Auto-seed check encountered non-fatal error:', seedErr);
+    }
+
     // 2. Initialize Redis (with auto fallback to embedded memory server if standalone is offline)
     await initRedis();
 
